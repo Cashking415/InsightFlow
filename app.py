@@ -13,9 +13,7 @@ st.write("An Enterprise Knowledge Intelligence Agent")
 uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
 
 if uploaded_file:
-
     reader = PdfReader(uploaded_file)
-
     text = ""
 
     for page in reader.pages:
@@ -36,19 +34,18 @@ if uploaded_file:
     embeddings = OpenAIEmbeddings()
 
     vectorstore = Chroma.from_texts(
-        chunks,
-        embeddings
+        texts=chunks,
+        embedding=embeddings
     )
 
     question = st.text_input("Ask a question about the document")
 
     if question:
-
         docs = vectorstore.similarity_search(question, k=3)
 
         st.subheader("Relevant Chunks")
 
         for i, doc in enumerate(docs):
-            st.write(f"Chunk {i+1}")
+            st.write(f"Chunk {i + 1}")
             st.write(doc.page_content)
             st.divider()
