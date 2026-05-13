@@ -11,18 +11,18 @@ from langgraph.graph import StateGraph, END
 load_dotenv()
 
 st.set_page_config(
-    page_title="InsightFlow",
+    page_title="IntelliFlow",
     page_icon="📄",
     layout="wide"
 )
 
-st.title("InsightFlow")
+st.title("IntelliFlow")
 st.caption("Enterprise Knowledge Intelligence Agent")
 
 with st.sidebar:
-    st.header("About InsightFlow")
+    st.header("About IntelliFlow")
     st.write(
-        "InsightFlow helps organizations search, summarize, and analyze internal business documents "
+        "IntelliFlow helps organizations search, summarize, and analyze internal business documents "
         "using Retrieval Augmented Generation."
     )
 
@@ -60,7 +60,7 @@ def build_agent_graph(vectorstore, llm):
 
     def generate_answer(state: AgentState):
         prompt = f"""
-You are InsightFlow, an enterprise knowledge assistant.
+You are IntelliFlow, an enterprise knowledge assistant.
 
 Use ONLY the provided document context to answer the user's question.
 
@@ -191,7 +191,7 @@ if uploaded_file:
                 context = "\n\n".join([doc.page_content for doc in docs])
 
                 summary_prompt = f"""
-You are InsightFlow, an enterprise knowledge assistant.
+You are IntelliFlow, an enterprise knowledge assistant.
 
 Create an executive summary of the uploaded document using ONLY the context below.
 
